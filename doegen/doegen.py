@@ -172,7 +172,7 @@ def calc_twofactorbalance(setup, Array):
         ncount += 1
         nperfect = runsize / (fac_levels[i] * fac_levels[j])
         df_group = (
-            df.groupby(["Param_" + str(i), "Param_" + str(j)])
+            df.groupby(["Param_" + str(i), "Param_" + str(j)], observed=False)
             .size()
             .reset_index()
             .rename(columns={0: "count"})
@@ -209,7 +209,7 @@ def calc_twofactorbalance(setup, Array):
     factors = sorted(setup.factor_names)
     for factor_name in factors:
         Alist.append(
-            pd.get_dummies(dfcat.set_index(factor_name), prefix_sep=" _").groupby(level=0)
+            pd.get_dummies(dfcat.set_index(factor_name), prefix_sep=" _").groupby(level=0, observed=False)
             .sum()
             .astype(int)
         )
@@ -784,10 +784,12 @@ def array2valuetable(setup, fname_array, fname_out):
         # loop over each factor
         facname = setup.factor_names[i]
         levels_array = dfarray[facname].unique()
+        dfarray[facname] = dfarray[facname].astype('object') # column is/was int64 # add this line to avoid coercion that will become deprecated in future version of pandas.
         lvals = setup.level_values[i]
         for nl, level in enumerate(levels_array):
             # loop over each level and replace array level with level value
             dfnew.loc[dfarray[facname] == level, facname] = lvals[nl]
+            # df['col'] = df['col'].astype('object')
     # Add experiment run number
     dfnew.index += 1
     dfnew.to_csv(fname_out, index_label="Nexp")
