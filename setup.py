@@ -1,7 +1,7 @@
 try:
     from setuptools import setup, find_packages
 except ImportError:
-    from distutils.core import setup
+    from setuptools import setup
 from os import path
 import os
 import subprocess
@@ -77,8 +77,9 @@ if __name__ == "__main__":
                                         'test/results/experiment_results_Nrun72.xlsx',
                                         'test/results/Designtable_optimal_Nrun72.csv']},
           include_package_data = False,
-          classifiers       = ['Programming Language :: Python :: 3',
-                               'Programming Language :: Python :: 3.6',
-                               'Programming Language :: Python :: 3.7'
+          classifiers       = [#'Programming Language :: Python :: 3',
+                               #'Programming Language :: Python :: 3.6',
+                               #'Programming Language :: Python :: 3.7',
+                               'Programming Language :: Python :: 3.12'
                                ]
           )
