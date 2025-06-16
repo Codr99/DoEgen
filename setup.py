@@ -1,7 +1,7 @@
 try:
     from setuptools import setup, find_packages
 except ImportError:
-    from setuptools import setup
+    from setuptools import setup # old setup
 from os import path
 import os
 import subprocess
@@ -64,7 +64,8 @@ if __name__ == "__main__":
                               'tabulate>=0.8.9',
                               'matplotlib>=3.1.0',
                               'PyYAML>=5.3.1',
-                              'scikit_learn>=0.22.2.post1'],
+                              'scikit_learn>=0.22.2.post1', #],
+                              'urllib3>=1.2'], # added
           python_requires   = '>=3.6',
           setup_requires    = ["pytest-runner", 'webdav'],
           tests_require     = ["pytest", 'webdav'],
