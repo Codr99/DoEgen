@@ -55,7 +55,7 @@ if __name__ == "__main__":
           long_description  = long_description,
           long_description_content_type='text/markdown',
           install_requires  = ['numpy>=1.16.3', 
-                              'xlrd==1.2.0',
+                              'xlrd>=1.2.0', # ==
                               'pandas>=1.0.3',
                               'XlsxWriter>=1.2.8',
                               'openpyxl>=3.0.7',
