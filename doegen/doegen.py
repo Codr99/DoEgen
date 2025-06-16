@@ -784,12 +784,12 @@ def array2valuetable(setup, fname_array, fname_out):
         # loop over each factor
         facname = setup.factor_names[i]
         levels_array = dfarray[facname].unique()
-        dfarray[facname] = dfarray[facname].astype('object') # column is/was int64 # add this line to avoid coercion that will become deprecated in future version of pandas.
+        #dfarray[facname] = dfarray[facname].astype('object') # column is/was int64 # add this line to avoid coercion that will become deprecated in future version of pandas.
+        dfnew[facname] = dfnew[facname].astype('object')
         lvals = setup.level_values[i]
         for nl, level in enumerate(levels_array):
             # loop over each level and replace array level with level value
             dfnew.loc[dfarray[facname] == level, facname] = lvals[nl]
-            # df['col'] = df['col'].astype('object')
     # Add experiment run number
     dfnew.index += 1
     dfnew.to_csv(fname_out, index_label="Nexp")
