@@ -491,7 +491,7 @@ def optimize_design(setup,outpath,runtime,delta,runsize,printopt=True,nrestarts=
 	Optimizes design for given design specification and  array length (runsize)
 	This optimization leverages part of the the oapackage.Doptimize package. 
 	See for more details https://oapackage.readthedocs.io/en/latest/index.html
-	Parameters for oapackage have been finetuned through testing various design setups.
+	Parameters for oapackage have been fine-tuned through testing various design setups.
 	The oapackage returns multiple designs and the best design is selected based on 
 	center balance effciency, orthogonality, and two-level balance (see function evaluate_design2)
 
@@ -763,7 +763,7 @@ def read_setup_new(fname_setup):
 
 def array2valuetable(setup, fname_array, fname_out):
     """
-	Generates experiment design table with level values from optimised experiment array.
+	Generates experiment design table with level values from optimized experiment array.
 	level values and factor names are obtained with ExperimentalSetup
 	
 	INPUT
@@ -982,7 +982,7 @@ def main(
     elif (minutes >= 3) & (minutes < 15):
         print("Perfect time for a cup of tea.")
     elif (minutes >= 15) & (minutes < 180):
-        print("Sit back and relax. This may take a while.")
+        print("Sit back and relax. This might take a while.")
     elif minutes >= 180:
         print("You may want to consider a smaller runsize.")
     print("Total estimated runtime:  " + str(round(minutes,2)) + " minutes")
@@ -1000,7 +1000,7 @@ def main(
  
     #print(effs_array)
     print("-------------------------------------------")
-    print("Finished optimising all possible run sizes.")
+    print("Finished optimizing all possible run sizes.")
 
     print("Saving efficiencies and design arrays as csv files....")
     # Save efficienices as Pandas and csv
